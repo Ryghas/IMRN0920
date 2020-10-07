@@ -48,78 +48,46 @@ console.log('') // spasi antar soal
 console.log('Soal No. 2 (Shopping Time)'); // title soal
 
 function shoppingTime(memberId, money) {
-  var arrayHarga =
-    [
-      {
-      nama : 'Sepatu Stacattu',
-      harga : 1500000
-      }, 
-      {
-        nama : 'Baju Zoro',
-        harga : 500000
-      },
-      {
-        nama : 'Baju H&N',
-        harga : 250000
-      },
-      {
-        nama : 'Sweater Uniklooh',
-        harga : 175000
-      },
-      {
-        nama : 'Casing Handphone',
-        harga : 50000
-      }
-    ]
-  var arrayHarga2 = [1500000, 500000, 250000, 175000, 50000];
+  var promoSale = {};
+  promoSale['Sepatu Stacattu'] = 1500000;
+  promoSale['Baju Zoro'] = 500000;
+  promoSale['Baju H&N'] = 250000;
+  promoSale['Sweater Uniklooh'] = 175000;
+  promoSale['Casing Handphone'] = 50000;
+
+  var shopping = {};
+  shopping['memberId'] = memberId;
+  shopping['money'] = money;
+  shopping['listPurchased'] = '';
+  shopping['changeMoney'] = '';
+
   var notice1 =  'Mohon maaf, toko X hanya berlaku untuk member saja';
   var notice2 = 'Mohon maaf, uang tidak cukup';
-  var a1 = '';
-  var parseBarang = [];
-  var sisa;
-  switch(true) 
-  {
-    case (memberId == '' || memberId == null):
-    a1 = notice1
-    break;
-    case (money < 50000):
-    a1 = notice2
-    break;
-    default:
-    for (var i = 0; arrayHarga2.length; i++)
+  var item = Object.keys(promoSale);
+  var harga = Object.values(promoSale);
+  var parseMerk = [];
+
+  if(!memberId) {
+    return notice1;
+  } else if (money < 50000) {
+    return notice2;
+  } else {
+        for (var i = 0; harga.length; i++)
     {
-      if (money >= arrayHarga2[i]) {
-        sisa = money - arrayHarga2[i];
+      if (money >= harga[i]) {
+        shopping.changeMoney = money -= harga[i];
+        parseMerk.push(item[i]);
+      } else {
+        shopping.changeMoney - money;
       }
+      shopping.lisPurchased = parseMerk;
     }
-    var parseBelanja = {
-      memberId : memberId,
-      money : money,
-      listPurchased : parseBarang,
-      changeMoney : sisa
-    }
-    a1 = parseBelanja;
-    break;
   }
-  return a1;
+  return shopping;
 }
  
 console.log(shoppingTime('1820RzKrnWn08', 2475000));
-  //{ memberId: '1820RzKrnWn08',
-  // money: 2475000,
-  // listPurchased:
-  //  [ 'Sepatu Stacattu',
-  //    'Baju Zoro',
-  //    'Baju H&N',
-  //    'Sweater Uniklooh',
-  //    'Casing Handphone' ],
-  // changeMoney: 0 }
 console.log(shoppingTime('82Ku8Ma742', 170000));
-//{ memberId: '82Ku8Ma742',
-// money: 170000,
-// listPurchased:
-//  [ 'Casing Handphone' ],
-// changeMoney: 120000 }
 console.log(shoppingTime('', 2475000));
 console.log(shoppingTime('234JdhweRxa53', 15000));
 console.log(shoppingTime());
