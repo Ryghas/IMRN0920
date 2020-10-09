@@ -1,99 +1,97 @@
-// // 1. Animasi Class
+// 1. Animasi Class
 
-// //  Release 0
+//  Release 0
 
-// var leg = 4;
-// var coldBlood = false;
+var leg = 4;
+var coldBlood = false;
 
-// class Animal {
-//     constructor (name) {
-//         this.name = name;
-//         this.legs = leg;
-//         this.cold_blooded = coldBlood;
-//     }
-//     get anam() {
-//       return this.name;
-//     }
-//     set anam(x) {
-//       this.name = x;
-//     }
+class Animal {
+    constructor (name) {
+        this.name = name;
+        this.legs = leg;
+        this.cold_blooded = coldBlood;
+    }
+    get anam() {
+      return this.name;
+    }
+    set anam(x) {
+      this.name = x;
+    }
 
-// }
+}
  
-// var sheep = new Animal("shaun");
+var sheep = new Animal("shaun");
  
-// console.log(sheep.anam)
-// console.log(sheep.legs)
-// console.log(sheep.cold_blooded)
+console.log(sheep.anam)
+console.log(sheep.legs)
+console.log(sheep.cold_blooded)
 
-// console.log('')
+console.log('')
 
-// // Release 1
+// Release 1
 
-// class Ape extends Animal {
-//   constructor (name, coldBlooded, leg) {
-//     super(name, coldBlooded);
-//     this.leg = 2;
-//   }
-//   yell = () => {
-//     var Auoo = console.log('Auooo')
-//     return Auoo
-//   }
-// }
+class Ape extends Animal {
+  constructor (name, coldBlooded, leg) {
+    super(name, coldBlooded);
+    this.leg = 2;
+  }
+  yell = () => {
+    var Auoo = console.log('Auooo')
+    return Auoo
+  }
+}
 
-// class Frog extends Animal {
-//   constructor (name, coldBlooded, leg) {
-//     super(name, coldBlooded, leg);
-//   }
-//   jump = () => {
-//     var hop = console.log('hop hop')
-//     return hop
-//   }
-// }
+class Frog extends Animal {
+  constructor (name, coldBlooded, leg) {
+    super(name, coldBlooded, leg);
+  }
+  jump = () => {
+    var hop = console.log('hop hop')
+    return hop
+  }
+}
 
-// var sungokong = new Ape("kera sakti")
-// console.log(sungokong.name)
-// sungokong.yell()
+var sungokong = new Ape("kera sakti")
+console.log(sungokong.name)
+sungokong.yell()
  
-// var kodok = new Frog("buduk")
-// console.log(kodok.name)
-// kodok.jump() 
+var kodok = new Frog("buduk")
+console.log(kodok.name)
+kodok.jump() 
 
-// console.log('')
+console.log('')
 
 // 2. Function to Class
 
 class Clock {
 
-    constructor(template) {
-      this.template = template;
-      this.timer = this.timer;
-      this.date = new Date();
-    }
+  constructor(template) {
+    this.template = template;
+    this.timer = this.timer;
+  }
 
-    render() {
-    
-      let time = this.date;
-      let hours = time.getHours();
-      if (hours < 10) hours = '0' + hours;
-      let minutes = time.getMinutes();
-      if (minutes < 10) minutes = '0' + minutes;
-      let seconds = time.getSeconds();
-      if (seconds < 10) seconds = '0' + seconds;
+  render = () =>  {
+    let time = new Date();
+    let hours = time.getHours();
+    if (hours < 10) hours = "0" + hours;
+    let minutes = time.getMinutes();
+    if (minutes < 10) minutes = "0" + minutes;
+    let seconds = time.getSeconds();
+    if (seconds < 10) seconds = "0" + seconds;
 
-      let output = hours + ':' + minutes + ':' + seconds; 
+    let output = hours + ":" + minutes + ":" + seconds;
 
-      console.log(output);
-    }
+    console.log(output);
+  }
 
-    stop() {
-      clearInterval(this.timer);
-    }
+  stop = () => {
+    clearInterval(this.timer);
+  }
 
-    start() {
-      this.timer = setInterval(this.render, 1000)
-    }
+  start = () => {
+    this.timer = setInterval(this.render, 1000);
+  }
 }
 
-var clock = new Clock({template: ''});
-clock.start();  
+var clock = new Clock({template: 'h:m:s'});
+clock.start();
