@@ -131,8 +131,8 @@ function recapScores(data) {
       if (j != 0) {
         sum += data[i];
       }
-      var average = sum/(data[i].length);
     }
+    var average = sum/(data[i].length);
     if (average > 90) {
       
     } else if (average > 80) {
